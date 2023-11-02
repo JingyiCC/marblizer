@@ -13,6 +13,7 @@ export default class ToolsPane {
         const dropButton = <HTMLElement>container.querySelector(".drop-tool");
         const spatterButton = <HTMLElement>container.querySelector(".spatter-tool");
         const tineButton = <HTMLElement>container.querySelector(".tine-tool");
+        const localButton = <HTMLElement>container.querySelector(".local-tool");
         const wavyButton = <HTMLElement>container.querySelector(".wavy-tine-tool");
         const circularButton = <HTMLElement>container.querySelector(".circular-tine-tool");
         const swirlButton = <HTMLElement>container.querySelector(".vortex-tool");
@@ -21,6 +22,7 @@ export default class ToolsPane {
         this.toolToButtonMapping[Tool.Drop] = dropButton;
         this.toolToButtonMapping[Tool.Spatter] = spatterButton;
         this.toolToButtonMapping[Tool.TineLine] = tineButton;
+        this.toolToButtonMapping[Tool.TineLineLocal] = localButton;
         this.toolToButtonMapping[Tool.WavyLine] = wavyButton;
         this.toolToButtonMapping[Tool.CircularTine] = circularButton;
         this.toolToButtonMapping[Tool.Vortex] = swirlButton;

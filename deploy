@@ -1,0 +1,16 @@
+git checkout master
+rm -rf build
+npx tsc
+git reset --soft 5cedea
+git add --all
+git commit -m "improve the lintine algorithm"
+git push -u origin master --force
+git branch -D deploy
+git branch deploy
+git checkout deploy
+rm -rf .gitignore src
+echo "node_modules" > .gitignore
+git add --all
+git commit -m "deploy"
+git push -u origin deploy --force
+git checkout master

@@ -3,6 +3,7 @@ import Vec2 from "../models/vector.js";
 import Operation from "../operations/color_operations.js";
 import InkDropOperation from "../operations/inkdrop.js";
 import LineTine from "../operations/linetine.js";
+import LineTineLocal from "../operations/linetineLocal.js";
 import WavyLineTine from "../operations/wavylinetine.js";
 import CircularLineTine from "../operations/circularlinetine.js";
 import Vortex from "../operations/vortex.js";
@@ -62,6 +63,8 @@ export default class VectorFieldOverlay {
                 break;
             case Tool.TineLine:
                 this.lastMouseCoord = new Vec2(x, y);
+            case Tool.TineLineLocal:
+                this.lastMouseCoord = new Vec2(x, y);
         }
     }
 
@@ -99,6 +102,19 @@ export default class VectorFieldOverlay {
                     const dir = this.lastMouseCoord.sub(this.mouseDownCoord);
                     if (dir.length() > 0.03) {
                         this.previewOperation = new LineTine(this.mouseDownCoord, dir, numTines, spacing);
+                    }
+                } else {
+                    this.previewOperation = null;
+                }
+                break;
+            }
+            case Tool.TineLineLocal: {
+                if (this.lastMouseCoord != null && this.mouseDownCoord != null) {
+                    const spacing = this.currentToolParameter['spacing'];
+                    const numTines = this.currentToolParameter['numTines'];
+                    const dir = this.lastMouseCoord.sub(this.mouseDownCoord);
+                    if (dir.length() > 0.03) {
+                        this.previewOperation = new LineTineLocal(this.mouseDownCoord, dir, numTines, spacing);
                     }
                 } else {
                     this.previewOperation = null;

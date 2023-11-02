@@ -7,17 +7,18 @@ export enum KeyboardShortcut {
     R = 3,
     D = 4,
     L = 5,
-    C = 6,
-    W = 7,
-    V = 8,
-    F = 9,
-    B = 10,
-    Q = 11,
-    QuestionMark = 12,
-    Up = 13,
-    Right = 14,
-    Down = 15,
-    Left = 16
+    E = 6,
+    C = 7,
+    W = 8,
+    V = 9,
+    F = 10,
+    B = 11,
+    Q = 12,
+    QuestionMark = 13,
+    Up = 14,
+    Right = 15,
+    Down = 16,
+    Left = 17
 }
 
 export const keyMapping = {
@@ -27,6 +28,7 @@ export const keyMapping = {
     "r": KeyboardShortcut.R,
     "d": KeyboardShortcut.D,
     "l": KeyboardShortcut.L,
+    "e": KeyboardShortcut.E,
     "c": KeyboardShortcut.C,
     "q": KeyboardShortcut.Q,
     "w": KeyboardShortcut.W,

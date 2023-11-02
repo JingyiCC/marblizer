@@ -2,12 +2,13 @@ export enum Tool {
     Drop = 0,
     Spatter = 1,
     TineLine = 2,
-    WavyLine = 3,
-    CircularTine = 4,
-    Vortex = 5
+    TineLineLocal = 3,
+    WavyLine = 4,
+    CircularTine = 5,
+    Vortex = 6
 }
 
-const allTools = [Tool.Drop, Tool.Spatter, Tool.TineLine, Tool.WavyLine, Tool.CircularTine, Tool.Vortex];
+const allTools = [Tool.Drop, Tool.Spatter, Tool.TineLine, Tool.TineLineLocal, Tool.WavyLine, Tool.CircularTine, Tool.Vortex];
 
 function toolInitializedObject<T>(): { [key: number]: T } {
     const object = {};
@@ -21,12 +22,14 @@ const primaryKeys: { [key: number]: string } = toolInitializedObject();
 primaryKeys[Tool.Drop] = "radius";
 primaryKeys[Tool.Spatter] = "scatterRadius";
 primaryKeys[Tool.TineLine] = "spacing";
+primaryKeys[Tool.TineLineLocal] = "spacing";
 primaryKeys[Tool.WavyLine] = "spacing";
 primaryKeys[Tool.CircularTine] = "spacing";
 
 const secondaryKeys: { [key: number]: string } = toolInitializedObject();
 secondaryKeys[Tool.Spatter] = "dropRadius";
 secondaryKeys[Tool.TineLine] = "numTines";
+secondaryKeys[Tool.TineLineLocal] = "numTines";
 secondaryKeys[Tool.CircularTine] = "numTines";
 
 const guides: { [key: number]: string } = toolInitializedObject();
@@ -35,6 +38,8 @@ guides[Tool.Spatter]["scatterRadius"] = [20, 300, 5];
 guides[Tool.Spatter]["dropRadius"] = [5, 40, 5];
 guides[Tool.TineLine]["spacing"] = [5, 300, 5];
 guides[Tool.TineLine]["numTines"] = [0, 20, 1];
+guides[Tool.TineLineLocal]["spacing"] = [5, 300, 5];
+guides[Tool.TineLineLocal]["numTines"] = [0, 20, 1];
 guides[Tool.WavyLine]["spacing"] = [5, 300, 5];
 guides[Tool.WavyLine]["numTines"] = [0, 20, 1];
 guides[Tool.CircularTine]["spacing"] = [5, 300, 5];
@@ -55,6 +60,8 @@ export default class ToolParameters {
         this.parameters[Tool.Spatter]["variability"] = 20;
         this.parameters[Tool.TineLine]["numTines"] = 1;
         this.parameters[Tool.TineLine]["spacing"] = 200;
+        this.parameters[Tool.TineLineLocal]["numTines"] = 1;
+        this.parameters[Tool.TineLineLocal]["spacing"] = 200;
         this.parameters[Tool.WavyLine]["numTines"] = 1;
         this.parameters[Tool.WavyLine]["spacing"] = 200;
         this.parameters[Tool.CircularTine]["numTines"] = 1;
