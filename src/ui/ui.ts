@@ -14,6 +14,7 @@ import Vortex from "../operations/vortex.js";
 import CircularLineTine from "../operations/circularlinetine.js";
 import WavyLineTine from "../operations/wavylinetine.js";
 import LineTineLocal from "../operations/linetineLocal.js";
+import WavyLineLocal from "../operations/wavytinelocal.js";
 import LineTine from "../operations/linetine.js";
 import KeyboardShortcutOverlay from "./help_overlay.js";
 import UserProgram from "../scripting/user_program.js";
@@ -205,6 +206,16 @@ export default class MarblingUI implements MarblingUIDelegate {
                     const numTines = this.toolsPane.toolParameters.forTool(Tool.TineLineLocal)['numTines'];
                     const spacing = this.toolsPane.toolParameters.forTool(Tool.TineLineLocal)['spacing'];
                     operation = new LineTineLocal(this.mouseDownCoord, direction, numTines, spacing);
+                    this._delegate.applyOperations([operation]);
+                }
+                break;
+            }
+            case Tool.WavyLineLocal: {
+                const direction = currentCoord.sub(this.mouseDownCoord);
+                if (direction.length() > 0.03) {
+                    const numTines = this.toolsPane.toolParameters.forTool(Tool.WavyLineLocal)['numTines'];
+                    const spacing = this.toolsPane.toolParameters.forTool(Tool.WavyLineLocal)['spacing'];
+                    operation = new WavyLineLocal(this.mouseDownCoord, direction, numTines, spacing);
                     this._delegate.applyOperations([operation]);
                 }
                 break;

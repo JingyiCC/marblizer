@@ -37,9 +37,12 @@ export default class CursorOverlay {
 
         const circle = new CircleRenderer();
         const tine = new TineRenderer();
-        const local = new TineRenderer();
+        const localTine = new TineRenderer();
+        const localWavy = new TineRenderer(function (t) {
+            return 100 * Math.sin(Math.PI+.013 * t)
+        });
         const wavy = new TineRenderer(function (t) {
-            return 100 * Math.sin(.013 * t)
+            return 100 * Math.sin(Math.PI+.013 * t)
         });
         const dynamicRadius = new DynamicRadiusRenderer();
         this.defaultRenderer = new CrossRenderer();
@@ -48,7 +51,8 @@ export default class CursorOverlay {
         this.rendererForTool[Tool.Drop] = circle;
         this.rendererForTool[Tool.Spatter] = circle;
         this.rendererForTool[Tool.TineLine] = tine;
-        this.rendererForTool[Tool.TineLineLocal] = local;
+        this.rendererForTool[Tool.TineLineLocal] = localTine;
+        this.rendererForTool[Tool.WavyLineLocal] = localWavy;
         this.rendererForTool[Tool.WavyLine] = wavy;
         this.rendererForTool[Tool.CircularTine] = dynamicRadius;
         this.rendererForTool[Tool.Vortex] = dynamicRadius;
@@ -78,6 +82,10 @@ export default class CursorOverlay {
                 break;
             case Tool.TineLine:
             case Tool.TineLineLocal:
+            case Tool.WavyLineLocal:
+                this.currentCursorRenderer['numTines'] = this.currentToolParameters["numTines"];
+                this.currentCursorRenderer['spacing'] = this.currentToolParameters["spacing"];
+                break;
             case Tool.WavyLine:
                 this.currentCursorRenderer['numTines'] = this.currentToolParameters["numTines"];
                 this.currentCursorRenderer['spacing'] = this.currentToolParameters["spacing"];

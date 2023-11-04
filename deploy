@@ -1,9 +1,9 @@
 git checkout master
 rm -rf build
 npx tsc
-git reset --soft 5cedea
+git reset --soft b911a6a
 git add --all
-git commit -m "improve the lintine algorithm"
+git commit -m "improve the wavyline algorithm"
 git push -u origin master --force
 git branch -D deploy
 git branch deploy
